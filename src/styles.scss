@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -10,12 +10,28 @@ body {
   width: 100%;
 }
 
-@media (min-width: 600px) {
-  .foxes { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 645px) {
+  .foxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (min-width: 900px) {
-  .foxes { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 980px) {
+  .foxes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1330px) {
+  .foxes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1650px) {
+  .foxes {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 .actions {
@@ -24,7 +40,7 @@ body {
   button {
     width: 100px;
     padding: 0.5rem 0.2rem;
-    margin-bottom: 2rem;
+    margin: 1rem 0;
     border: 2px solid rgb(226, 147, 0);
     color: rgb(226, 147, 0);
     border-radius: 5px;
@@ -48,7 +64,8 @@ p {
   text-align: center;
 }
 
-h2 {
+h2,
+h3 {
   text-align: center;
   text-decoration: underline;
   margin-bottom: 0;
@@ -77,5 +94,18 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+  }
+}
+
+.no-foxes {
+  text-align: center;
+  height: 150px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  a {
+    width: 80px;
   }
 }

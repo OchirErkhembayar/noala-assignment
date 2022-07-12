@@ -1,5 +1,8 @@
-<ng-container *ngIf="!loading; else loadingState">
+<ng-container *ngIf="!loading && foxes.length > 0; else loadingState">
   <h2>Favourites</h2>
+  <div class="actions" [ngClass]="{ disabled: this.loading }">
+    <button (click)="clear()" [disabled]="this.loading">Clear</button>
+  </div>
   <div class="foxes">
     <app-fave
       (onRemoveFavourite)="onRemoveFavourite(i)"
@@ -10,5 +13,13 @@
   </div>
 </ng-container>
 <ng-template #loadingState>
-  <p>Loading...</p>
+  <ng-container *ngIf="foxes.length > 0; else noFoxes">
+    <p>Loading...</p>
+  </ng-container>
+</ng-template>
+<ng-template #noFoxes>
+  <div class="no-foxes">
+    <h3>No foxes!</h3>
+    <a routerLink="/">Add some foxes!</a>
+  </div>
 </ng-template>

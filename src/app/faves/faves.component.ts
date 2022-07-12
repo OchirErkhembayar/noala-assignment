@@ -25,4 +25,9 @@ export class FavesComponent implements OnInit {
     localStorage.setItem("foxes", JSON.stringify(storedFoxes));
     this.foxes = storedFoxes;
   }
+
+  clear() {
+    localStorage.removeItem("foxes");
+    this.foxes = [];
+  }
 }
