@@ -1,7 +1,18 @@
-<div *ngIf="!loading && !error; else loadingState" class="foxes">
-  <app-fox (refreshSingle)="refreshSingle(i)" *ngFor="let fox of foxes; let i = index" [i]="i" [foxUrl]="fox"></app-fox>
-</div>
-<ng-template #loadingState><p>Loading...</p></ng-template>
-<div class="actions">
-  <button (click)="refresh()">Refresh</button>
+<ng-container *ngIf="!loading; else loadingState">
+  <h2>Foxes!</h2>
+  <div class="foxes">
+    <app-fox
+      (onFavourite)="onFavourite(i)"
+      (refreshSingle)="refreshSingle(i)"
+      *ngFor="let fox of foxes; let i = index"
+      [i]="i"
+      [foxUrl]="fox"
+    ></app-fox>
+  </div>
+</ng-container>
+<ng-template #loadingState>
+  <p>Loading...</p>
+</ng-template>
+<div class="actions" [ngClass]="{ disabled: this.loading }">
+  <button (click)="refresh()" [disabled]="this.loading">Refresh</button>
 </div>

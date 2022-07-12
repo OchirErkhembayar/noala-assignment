@@ -1,1 +1,14 @@
-<p>faves works!</p>
+<ng-container *ngIf="!loading; else loadingState">
+  <h2>Favourites</h2>
+  <div class="foxes">
+    <app-fave
+      (onRemoveFavourite)="onRemoveFavourite(i)"
+      *ngFor="let fox of foxes; let i = index"
+      [i]="i"
+      [foxUrl]="fox"
+    ></app-fave>
+  </div>
+</ng-container>
+<ng-template #loadingState>
+  <p>Loading...</p>
+</ng-template>

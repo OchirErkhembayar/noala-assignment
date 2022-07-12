@@ -7,10 +7,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class FoxComponent implements OnInit {
   @Output() refreshSingle = new EventEmitter<number>;
+  @Output() onFavourite = new EventEmitter<number>;
 
   @Input('foxUrl') foxUrl: string = '';
-  constructor() {  }
   @Input() i: number = 0;
+  constructor() {  }
 
   ngOnInit(): void {
   }
@@ -19,4 +20,7 @@ export class FoxComponent implements OnInit {
     this.refreshSingle.emit(this.i);
   }
 
+  onAddFavourite() {
+    this.onFavourite.emit(this.i);
+  }
 }

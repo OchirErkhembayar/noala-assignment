@@ -4,3 +4,78 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.foxes {
+  display: grid;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .foxes { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .foxes { grid-template-columns: repeat(3, 1fr); }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  button {
+    width: 100px;
+    padding: 0.5rem 0.2rem;
+    margin-bottom: 2rem;
+    border: 2px solid rgb(226, 147, 0);
+    color: rgb(226, 147, 0);
+    border-radius: 5px;
+    background-color: transparent;
+    font-weight: bold;
+    &:hover {
+      color: white;
+      background-color: rgb(226, 147, 0);
+      cursor: pointer;
+    }
+  }
+}
+
+.disabled {
+  button {
+    display: none;
+  }
+}
+
+p {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 0;
+}
+
+.fox-card {
+  width: 300px;
+  margin: 1rem auto;
+  border: 1px solid rgba(0, 0, 0, 0.258);
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  i {
+    color: rgb(249, 87, 114);
+    &:hover {
+      font-size: large;
+      cursor: pointer;
+    }
+  }
+  .fox-card__actions {
+    height: 23px;
+    text-align: center;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
