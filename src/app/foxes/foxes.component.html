@@ -1,0 +1,7 @@
+<div *ngIf="!loading && !error; else loadingState" class="foxes">
+  <app-fox (refreshSingle)="refreshSingle(i)" *ngFor="let fox of foxes; let i = index" [i]="i" [foxUrl]="fox"></app-fox>
+</div>
+<ng-template #loadingState><p>Loading...</p></ng-template>
+<div class="actions">
+  <button (click)="refresh()">Refresh</button>
+</div>
