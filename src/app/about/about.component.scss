@@ -4,19 +4,27 @@ h1 {
 
 .about {
   text-align: center;
+  width: 380px;
+  margin: 0 auto;
+}
+
+@media (max-width: 400px) {
+  .about {
+    width: 80vw;
+  }
 }
 
 .content {
   margin-top: 1rem;
-  margin: 0 auto;
   border: 10px solid #ffffff;
-  width: 380px;
+  width: calc(100% - 20px);
+  margin: 0 auto;
   color: black;
   background-color: white;
   border-radius: 3px;
   img {
     height: 350px;
-    width: 380px;
+    width: 100%;
     object-fit: cover;
     border-radius: 3px;
   }

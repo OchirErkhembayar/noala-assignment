@@ -3,6 +3,14 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 1.25rem;
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    img {
+      height: 45px;
+    }
+  }
   a {
     text-decoration: none;
     color: white;
@@ -27,5 +35,17 @@ nav {
     .active {
       text-decoration: underline;
     }
+  }
+}
+
+@media (max-width: 485px) {
+  nav {
+    padding: 0;
+  }
+}
+
+@media (max-width: 440px) {
+  nav {
+    padding: 0.5rem;
   }
 }
