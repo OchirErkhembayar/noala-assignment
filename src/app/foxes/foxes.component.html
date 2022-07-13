@@ -1,5 +1,9 @@
-<ng-container *ngIf="!loading; else loadingState">
-  <h2>Foxes!</h2>
+<app-notification
+  [ngClass]="{ invisible: this.hideNotif }"
+  inputField="🦊 Fox added to favourites!"
+></app-notification>
+<ng-container *ngIf="!loading && !error; else loadingState">
+  <h1>Foxes</h1>
   <div class="actions" [ngClass]="{ disabled: this.loading }">
     <button (click)="refresh()" [disabled]="this.loading">Refresh</button>
   </div>
@@ -13,6 +17,15 @@
     ></app-fox>
   </div>
 </ng-container>
-<ng-template #loadingState>
-  <p>Loading...</p>
+<ng-template class="loading" #loadingState>
+  <ng-container *ngIf="!error; else errorState">
+    <p>Calling the foxes...</p>
+    <div class="loader"></div>
+  </ng-container>
+</ng-template>
+<ng-template #errorState>
+  <h3>No foxes 😔 server error.</h3>
+  <div class="actions" [ngClass]="{ disabled: this.loading }">
+    <button (click)="refresh()" [disabled]="this.loading">Try again</button>
+  </div>
 </ng-template>

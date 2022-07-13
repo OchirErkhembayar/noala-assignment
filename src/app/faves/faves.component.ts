@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-faves',
   templateUrl: './faves.component.html',
-  styleUrls: ['./faves.component.scss']
+  styleUrls: ['./faves.component.scss'],
 })
 export class FavesComponent implements OnInit {
   foxes: string[] = [];
   loading: boolean = true;
+  notificationShowing: boolean = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     const storedFoxesUnparsed = localStorage.getItem('foxes');
@@ -20,14 +21,18 @@ export class FavesComponent implements OnInit {
   }
 
   onRemoveFavourite(i: number) {
-    const storedFoxes = JSON.parse(localStorage.getItem("foxes")!);
+    const storedFoxes = JSON.parse(localStorage.getItem('foxes')!);
     storedFoxes.splice(i, 1);
-    localStorage.setItem("foxes", JSON.stringify(storedFoxes));
+    localStorage.setItem('foxes', JSON.stringify(storedFoxes));
     this.foxes = storedFoxes;
   }
 
   clear() {
-    localStorage.removeItem("foxes");
+    localStorage.removeItem('foxes');
     this.foxes = [];
+  }
+
+  close(element: any) {
+    element.open();
   }
 }

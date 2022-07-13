@@ -1,0 +1,23 @@
+h1 {
+  margin-bottom: 1rem;
+}
+
+.about {
+  text-align: center;
+}
+
+.content {
+  margin-top: 1rem;
+  margin: 0 auto;
+  border: 10px solid #ffffff;
+  width: 380px;
+  color: black;
+  background-color: white;
+  border-radius: 3px;
+  img {
+    height: 350px;
+    width: 380px;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+}

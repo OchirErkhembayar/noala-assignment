@@ -1,8 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  font-family: "Lato", sans-serif;
+html, body{
   margin: 0;
-  padding: 0;
+  min-height: 100vh;
+  overflow-y: scroll;
+}
+
+html{
+  background-size: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(177, 52, 0, 1) 0%,
+    rgba(198, 93, 69, 1) 30%,
+    rgba(250, 105, 73, 1) 100%
+  );
+}
+
+body {
+  padding: 0.6rem 3rem;
+  font-family: "Lato", sans-serif;
+  color: white;
 }
 
 .foxes {
@@ -10,25 +26,31 @@ body {
   width: 100%;
 }
 
-@media (min-width: 645px) {
+@media (max-width: 440px) {
+  body {
+    padding: 0;
+  }
+}
+
+@media (min-width: 770px) {
   .foxes {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 980px) {
+@media (min-width: 1120px) {
   .foxes {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 1330px) {
+@media (min-width: 1450px) {
   .foxes {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (min-width: 1650px) {
+@media (min-width: 1780px) {
   .foxes {
     grid-template-columns: repeat(5, 1fr);
   }
@@ -41,14 +63,13 @@ body {
     width: 100px;
     padding: 0.5rem 0.2rem;
     margin: 1rem 0;
-    border: 2px solid rgb(226, 147, 0);
-    color: rgb(226, 147, 0);
-    border-radius: 5px;
-    background-color: transparent;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    background-color: white;
     font-weight: bold;
     &:hover {
-      color: white;
-      background-color: rgb(226, 147, 0);
+      background-color: rgb(233, 233, 233);
       cursor: pointer;
     }
   }
@@ -64,25 +85,31 @@ p {
   text-align: center;
 }
 
-h2,
+h1,
 h3 {
   text-align: center;
-  text-decoration: underline;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
 .fox-card {
   width: 300px;
   margin: 1rem auto;
-  border: 1px solid rgba(0, 0, 0, 0.258);
+  background-color: white;
+  border: 10px solid white;
+  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.163);
+  border-radius: 3px;
+  position: relative;
   img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-radius: 3px;
   }
   i {
-    color: rgb(249, 87, 114);
+    color: rgb(104, 104, 104);
     &:hover {
+      color: rgb(249, 87, 114);
       font-size: large;
       cursor: pointer;
     }
@@ -94,6 +121,25 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    p {
+      color: transparent;
+    }
+  }
+  a:hover {
+    transition: 0.5s ease;
+    p {
+      transition: 0.5s ease;
+      color: white;
+    }
+    background-color: rgba(0, 0, 0, 0.167);
   }
 }
 
@@ -108,4 +154,23 @@ h3 {
   a {
     width: 80px;
   }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  width: 100%;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.fox-card:hover .overlay {
+  opacity: 1;
 }

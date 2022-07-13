@@ -8,6 +8,8 @@ import { FoxComponent } from './foxes/fox/fox.component';
 import { FavesComponent } from './faves/faves.component';
 import { FaveComponent } from './faves/fave/fave.component';
 import { HeaderComponent } from './header/header.component';
+import { NotificationComponent } from './notification/notification.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { HeaderComponent } from './header/header.component';
     FoxComponent,
     FavesComponent,
     FaveComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotificationComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

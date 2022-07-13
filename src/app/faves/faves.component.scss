@@ -1,16 +1,32 @@
 a {
-  width: 100px;
-  padding: 0.5rem 0.2rem;
+  width: 130px;
+  padding: 1rem 0.5rem;
   margin-bottom: 2rem;
-  border: 2px solid rgb(226, 147, 0);
-  color: rgb(226, 147, 0);
+  border: none;
+  color: black;
   border-radius: 5px;
-  background-color: transparent;
+  background-color: white;
   font-weight: bold;
   text-decoration: none;
   &:hover {
-    color: white;
-    background-color: rgb(226, 147, 0);
+    background-color: rgb(224, 224, 224);
     cursor: pointer;
   }
+}
+
+.columnWrapper {
+  display: flex;
+  flex-flow: row;
+  padding-top: 30px;
+}
+.columnWrapper span {
+  min-width: 250px;
+  flex: 1 0 0px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+button {
+  margin-top: 20px;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IgxToastComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-foxes',
@@ -9,15 +10,20 @@ export class FoxesComponent implements OnInit {
   foxes: string[] = [];
   loading: boolean = true;
   error: boolean = false;
+  hideNotif: boolean = true;
 
   constructor() { }
 
   async ngOnInit(): Promise<void> {
     for (let i = 0; i < 5; i++) {
       const res = await fetch('https://randomfox.ca/floof/');
+      if (!res.ok) {
+        this.error = true;
+        this.loading = false;
+        return;
+      }
       let data = await res.json();
       while (this.foxes.includes(data.image)) {
-        console.log("Duplicate!");
         const reres = await fetch('https://randomfox.ca/floof/');
         data = await reres.json();
       }
@@ -27,13 +33,13 @@ export class FoxesComponent implements OnInit {
   }
 
   async refresh() {
+    this.error = false;
     this.loading = true;
     this.foxes = [];
     for (let i = 0; i < 5; i++) {
       const res = await fetch('https://randomfox.ca/floof/');
       let data = await res.json();
       while (this.foxes.includes(data.image)) {
-        console.log("Duplicate!");
         const reres = await fetch('https://randomfox.ca/floof/');
         data = await reres.json();
       }
@@ -49,6 +55,7 @@ export class FoxesComponent implements OnInit {
   }
 
   onFavourite(index: number) {
+    this.hideNotif = false;
     const fox: string = this.foxes[index];
     const storedFoxesUnparsed = localStorage.getItem("foxes");
     if (!storedFoxesUnparsed) {
@@ -57,11 +64,14 @@ export class FoxesComponent implements OnInit {
     } else {
       const storedFoxes: string[] = JSON.parse(storedFoxesUnparsed);
       if (storedFoxes.includes(fox)) {
-        return console.log(storedFoxes, 'This fox is already in your favourites');
+        return;
       }
       storedFoxes.push(fox);
       localStorage.setItem('foxes', JSON.stringify(storedFoxes));
     }
     this.refreshSingle(index);
+    setTimeout(() => {
+      this.hideNotif = true;
+    }, 2000);
   }
 }
