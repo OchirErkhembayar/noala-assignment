@@ -11,10 +11,11 @@
   position: fixed;
   top: 60px;
   right: 25px;
+  z-index: 10;
   a {
     cursor: pointer;
   }
-  animation: fadeOut 4s;
+  animation: fadeOut 1s 1s;
 }
 
 .flash-success {

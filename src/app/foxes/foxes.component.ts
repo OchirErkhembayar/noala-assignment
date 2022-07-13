@@ -11,6 +11,8 @@ export class FoxesComponent implements OnInit {
   loading: boolean = true;
   error: boolean = false;
   hideNotif: boolean = true;
+  // Working on this to reset the notification when many favourites are clicked.
+  timerId: any;
 
   constructor() { }
 
@@ -55,6 +57,7 @@ export class FoxesComponent implements OnInit {
   }
 
   onFavourite(index: number) {
+    clearInterval(this.timerId);
     this.hideNotif = false;
     const fox: string = this.foxes[index];
     const storedFoxesUnparsed = localStorage.getItem("foxes");
@@ -64,13 +67,14 @@ export class FoxesComponent implements OnInit {
     } else {
       const storedFoxes: string[] = JSON.parse(storedFoxesUnparsed);
       if (storedFoxes.includes(fox)) {
+        this.hideNotif = true;
         return;
       }
       storedFoxes.push(fox);
       localStorage.setItem('foxes', JSON.stringify(storedFoxes));
     }
     this.refreshSingle(index);
-    setTimeout(() => {
+    this.timerId = setInterval(() => {
       this.hideNotif = true;
     }, 2000);
   }
